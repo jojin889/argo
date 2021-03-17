@@ -50,7 +50,7 @@ function App() {
         <section className="member-list">
           {users ? (
             users.map((user) => {
-              return <div className="member-item">{user.name}</div>;
+              return <div className="member-item" key={user._id}>{user.name}</div>;
             })
           ) : (
             <div className="member-item">Loading...</div>
