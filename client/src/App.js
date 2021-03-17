@@ -30,7 +30,9 @@ function App() {
           src="https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png"
           alt="Wild Code School logo"
         />
-        Les Argonautes
+        Les Argonautes <br/>
+        <span>https://github.com/jojin889/argo</span>
+
       </h1>
       <main>
         <h2>Ajouter un(e) Argonaute</h2>
@@ -44,6 +46,7 @@ function App() {
             onChange={(e) => setName(e.target.value)}
           />
           <button type="submit">Envoyer</button>
+          
         </form>
 
         <h2>Membres de l'équipage :</h2>
