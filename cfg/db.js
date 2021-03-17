@@ -7,7 +7,7 @@ var options = {
    useUnifiedTopology: true,
   };
 
-mongoose.connect('mongodb+srv://jojin889:argo123@cluster0.2i8si.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://'+ process.env.DB_USER_PASS + '@cluster0.2i8si.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     options,
     function(err) {
      if (err) {

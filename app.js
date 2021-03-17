@@ -2,7 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-require("./db.js")
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -21,6 +21,9 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+require("dotenv").config({ path: "./cfg/.env" });
+require("./cfg/db");
+
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -33,8 +36,24 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const port = process.env.PORT || 4000;
-app.listen(port);
+// server
+app.listen(process.env.PORT, () => {
+  console.log(`Listening on port ${process.env.PORT}`);
+});
+
+
+
+//////////////////// DEPLOY HEROKU MEGA IMPORTANT
+if (process.env.NODE_ENV === "production") {
+  // Exprees will serve up production assets
+  app.use(express.static("client/build"));
+
+  // Express serve up index.html file if it doesn't recognize route
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 
 module.exports = app;
