@@ -2,11 +2,6 @@ var express = require("express");
 var router = express.Router();
 var userModel = require("../models/users");
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  res.send("index", { title: "Express" });
-});
-
 router.get("/getUsers", async function (req, res, next) {
   const users = await userModel.find((err, data) => {
     if (!err) res.send(data)
