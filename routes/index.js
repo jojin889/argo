@@ -4,7 +4,7 @@ var userModel = require("../models/users");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
+  res.send("index", { title: "Express" });
 });
 
 router.get("/getUsers", async function (req, res, next) {
