@@ -1,4 +1,3 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -8,6 +7,10 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// allow all
+const cors = require("cors");
+app.use(cors())
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -15,11 +18,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
 
 require("dotenv").config({ path: "./cfg/.env" });
 require("./cfg/db");
