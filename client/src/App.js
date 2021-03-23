@@ -20,7 +20,7 @@ function App() {
   }, []);
 
   const handleNewUser = (e) => {
-    axios.post("http://localhost:4000/createUser", {
+    axios.post(`${process.env.REACT_APP_API_URL}/createUser`, {
       name: name,
     });
   };
