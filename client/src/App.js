@@ -9,8 +9,10 @@ function App() {
 
   useEffect(() => {
     if (loadUsers) {
-      axios.get("http://localhost:4000/getUsers").then((response) => {
-        console.log(response.data);
+      console.log("f------", process.env)
+      
+      axios.get(`${process.env.REACT_APP_API_URL}/getUsers`).then((response) => {
+        console.log("response.data", response.data);
         setUsers(response.data);
       });
       setLoadUsers(false);
